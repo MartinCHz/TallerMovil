@@ -17,7 +17,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class Opciones extends AppCompatActivity {
 
-    Button buttonCerrar, buttonDisponibilidad;
+    Button buttonCerrar, buttonDisponibilidad, buttonMapa;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
@@ -31,6 +31,7 @@ public class Opciones extends AppCompatActivity {
         setContentView(R.layout.activity_opciones);
         buttonCerrar = findViewById(R.id.button6);
         buttonDisponibilidad = findViewById(R.id.button5);
+        buttonMapa = findViewById(R.id.buttonMap);
         dispo = findViewById(R.id.textView5);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -42,6 +43,14 @@ public class Opciones extends AppCompatActivity {
             public void onClick(View view) {
                 mAuth.signOut();
                 Intent intent = new Intent(Opciones.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Opciones.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

@@ -5,4 +5,5 @@
     <string name="nombre">Martin Zhaohong</string>
     <string name="apellido">Chen He</string>
     <string name="Noident">1121341819</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
