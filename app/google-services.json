@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "38236577076",
+    "project_id": "tallermovil-11f83",
+    "storage_bucket": "tallermovil-11f83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38236577076:android:d2ac245b06a3a1eeb89961",
+        "android_client_info": {
+          "package_name": "com.example.taller3firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38236577076-qhmrooucqh6e44n1ff919vqosdba2fp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEjEyT5RAUiDU_VX9Q0XzbfBYoxCLPqVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38236577076-qhmrooucqh6e44n1ff919vqosdba2fp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

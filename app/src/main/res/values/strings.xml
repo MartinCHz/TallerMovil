@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Taller3Firebase</string>
+    <string name="correo">prueba@gmail.com</string>
+    <string name="pass">Introduce tu contraseña</string>
+    <string name="nombre">Martin Zhaohong</string>
+    <string name="apellido">Chen He</string>
+    <string name="Noident">1121341819</string>
+</resources>

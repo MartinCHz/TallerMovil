@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".IniciarSesion">
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="330dp"
+        android:layout_height="54dp"
+        app:backgroundTint="#1877F2"
+        android:text="Iniciar sesión"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/epass"
+        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="478dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="200dp"
+        android:text="Usuario (correo electrónico)"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="209dp" />
+
+    <EditText
+        android:id="@+id/epass"
+        android:hint="@string/pass"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginStart="20dp"
+        android:inputType="textPassword"
+        android:layout_below="@id/textView3"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="355dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contraseña"
+        android:layout_below="@id/ecorreo"
+        android:layout_marginStart="20dp"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="30dp" />
+
+    <EditText
+        android:id="@+id/ecorreo"
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="@string/correo"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="228dp" />
+
+</RelativeLayout>
