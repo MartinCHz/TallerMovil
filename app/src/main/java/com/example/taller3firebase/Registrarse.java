@@ -235,7 +235,7 @@ public class Registrarse extends AppCompatActivity {
             startActivity(intent);
         } else {
             emailEdit.setText("");
-            lastnameEdit.setText("");
+            lastnameEdit.setText("");//hola
             emailEdit.setText("");
             passEdit.setText("");
             numIDEdit.setText("");
