@@ -1,5 +1,7 @@
 package com.example.taller3firebase;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,21 +10,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.taller3firebase.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class Opciones extends AppCompatActivity {
 
     Button buttonCerrar, buttonDisponibilidad, buttonMapa, buttonListarUsuarios;
     private FirebaseAuth mAuth;
-    private FirebaseDatabase database;
     private DatabaseReference myRef;
-    private FirebaseStorage storage;
-    private StorageReference storageRef;
     TextView dispo;
 
     @Override
@@ -35,9 +36,8 @@ public class Opciones extends AppCompatActivity {
         buttonCerrar = findViewById(R.id.button6);
         dispo = findViewById(R.id.textView5);
         mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance();
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
+        myRef = FirebaseDatabase.getInstance().getReference();
+        dispon(myRef);
 
         buttonCerrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +48,20 @@ public class Opciones extends AppCompatActivity {
             }
         });
 
+        buttonDisponibilidad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                User p = new User();
+                if(dispo.getText() == "Disponible"){
+                    dispo.setText("No disponible");
+
+                }else{
+                    dispo.setText("Disponible");
+                    p.setAvailable(true);
+                }
+            }
+        });
+
         buttonMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,15 +69,40 @@ public class Opciones extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
-        buttonDisponibilidad.setOnClickListener(new View.OnClickListener() {
+    public void dispon(DatabaseReference myRef){
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        myRef.child("user").addChildEventListener(new ChildEventListener() {
             @Override
-            public void onClick(View view) {
-                if(dispo.getText() == "Disponible"){
-                    dispo.setText("No disponible");
-                }else{
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                User newUser = snapshot.getValue(User.class);
+                if(newUser.isAvailable()){
                     dispo.setText("Disponible");
+                }else{
+                    dispo.setText("No disponible");
                 }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
         buttonListarUsuarios.setOnClickListener(view -> {
@@ -72,10 +111,4 @@ public class Opciones extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser user = mAuth.getCurrentUser();
-        myRef = FirebaseDatabase.getInstance().getReference();
-    }
 }
