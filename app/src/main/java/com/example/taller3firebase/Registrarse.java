@@ -9,12 +9,8 @@ import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,7 +25,6 @@ import android.widget.Toast;
 
 import com.example.taller3firebase.model.DatabasePaths;
 import com.example.taller3firebase.model.User;
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -85,7 +80,7 @@ public class Registrarse extends AppCompatActivity {
         numIDEdit = findViewById(R.id.eident);
 
         mAuth = FirebaseAuth.getInstance();
-        myRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://tallermovil-11f83-default-rtdb.firebaseio.com");
+        myRef = FirebaseDatabase.getInstance().getReference();
 
         logger.info("Se va a solicitar el permiso");
         requestPermission(Registrarse.this, cameraPerm, "Permiso para utiliza la camara", CAMERA_PERMISSION_ID);
@@ -119,8 +114,6 @@ public class Registrarse extends AppCompatActivity {
                                 public void onFailure(@NonNull Exception exception) {
                                 }
                             });
-                    Intent intent = new Intent(Registrarse.this, Opciones.class);
-                    startActivity(intent);
                 }
             }
         });
@@ -234,8 +227,8 @@ public class Registrarse extends AppCompatActivity {
             //intent.putExtra("user", currentUser.getEmail());
             startActivity(intent);
         } else {
-            emailEdit.setText("");
-            lastnameEdit.setText("");//hola
+            nameEdit.setText("");
+            lastnameEdit.setText("");
             emailEdit.setText("");
             passEdit.setText("");
             numIDEdit.setText("");
@@ -254,15 +247,18 @@ public class Registrarse extends AppCompatActivity {
 
                             if(user!=null){
                                 // uploadImageToFirebase(user.getUid());
+
                                 User p = new User();
                                 p.setName(nameEdit.getText().toString());
                                 p.setLastname(lastnameEdit.getText().toString());
                                 p.setNumID(numIDEdit.getText().toString());
-                                p.setAvailable(false);
+                                p.setAvailable(true);
 
                                 myRef=FirebaseDatabase.getInstance().getReference(DatabasePaths.USER + user.getUid());
                                 myRef.setValue(p);
                                 updateUI(user);
+
+
                             }
                         } else {
                             // If sign in fails, display a message to the user.

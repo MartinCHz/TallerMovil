@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "38236577076",
-    "project_id": "tallermovil-11f83",
-    "storage_bucket": "tallermovil-11f83.appspot.com"
+    "project_number": "26325977034",
+    "firebase_url": "https://taller3firebase-49894-default-rtdb.firebaseio.com",
+    "project_id": "taller3firebase-49894",
+    "storage_bucket": "taller3firebase-49894.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:38236577076:android:d2ac245b06a3a1eeb89961",
+        "mobilesdk_app_id": "1:26325977034:android:d6194c238b8d87ace07133",
         "android_client_info": {
           "package_name": "com.example.taller3firebase"
         }
       },
       "oauth_client": [
         {
-          "client_id": "38236577076-qhmrooucqh6e44n1ff919vqosdba2fp2.apps.googleusercontent.com",
+          "client_id": "26325977034-u49hoohi1g51s87qbo8cuso7jjqnr449.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCEjEyT5RAUiDU_VX9Q0XzbfBYoxCLPqVg"
+          "current_key": "AIzaSyDAIAZvltRED5uQDroSYebZs6kCDfSTbE0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "38236577076-qhmrooucqh6e44n1ff919vqosdba2fp2.apps.googleusercontent.com",
+              "client_id": "26325977034-u49hoohi1g51s87qbo8cuso7jjqnr449.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
