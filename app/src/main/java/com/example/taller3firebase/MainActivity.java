@@ -19,12 +19,9 @@ public class MainActivity extends AppCompatActivity {
         buttonIniciar = findViewById(R.id.button);
         buttonRegistrar = findViewById(R.id.button2);
 
-        buttonIniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, IniciarSesion.class);
-                startActivity(intent);
-            }
+        buttonIniciar.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, IniciarSesion.class);
+            startActivity(intent);
         });
 
         buttonRegistrar.setOnClickListener(new View.OnClickListener() {

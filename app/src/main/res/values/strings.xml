@@ -6,4 +6,6 @@
     <string name="apellido">Chen He</string>
     <string name="Noident">1121341819</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="list_users_title">Usuarios</string>
+    <string name="usuario_nombre">nombre</string>
 </resources>

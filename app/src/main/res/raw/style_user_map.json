@@ -1,0 +1,38 @@
+[
+  {
+    "featureType": "landscape.natural.landcover",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#edf7f2"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#bdf5ff"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#1877f2"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#004cc7"
+      }
+    ]
+  }
+]

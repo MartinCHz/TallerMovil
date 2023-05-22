@@ -256,11 +256,11 @@ public class Registrarse extends AppCompatActivity {
                                 // uploadImageToFirebase(user.getUid());
                                 User p = new User();
                                 p.setName(nameEdit.getText().toString());
-                                p.setLastname(lastnameEdit.getText().toString());
-                                p.setNumID(numIDEdit.getText().toString());
+                                p.setLastName(lastnameEdit.getText().toString());
+                                p.setNumId(numIDEdit.getText().toString());
                                 p.setAvailable(false);
 
-                                myRef=FirebaseDatabase.getInstance().getReference(DatabasePaths.USER + user.getUid());
+                                myRef=FirebaseDatabase.getInstance().getReference(DatabasePaths.USERS + user.getUid());
                                 myRef.setValue(p);
                                 updateUI(user);
                             }
