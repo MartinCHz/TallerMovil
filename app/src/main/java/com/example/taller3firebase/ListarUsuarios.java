@@ -62,7 +62,8 @@ public class ListarUsuarios extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             User user = userListLocal.get(position);
             Intent intent = new Intent(ListarUsuarios.this, MapsUsuario.class);
-//            intent.putExtra("user", user);
+            intent.putExtra("user", user);
+            Log.i(TAG, "User selected: " + user.toString());
             startActivity(intent);
         });
 
@@ -85,23 +86,21 @@ public class ListarUsuarios extends AppCompatActivity {
 
 
     public void loadQueryUser() {
-        myRef = database.getReference(DatabasePaths.USERS);
+        myRef = database.getReference(DatabasePaths.USER);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 userListLocal.clear();
                 for (DataSnapshot snapshot: datasnapshot.getChildren()) {
                     User ppl = snapshot.getValue(User.class);
-                    userListLocal.add(ppl);
+                    ppl.setId(snapshot.getKey());
+                    if(!ppl.getId().equals(currentUser.getUid()) && ppl.isAvailable()){
+                        userListLocal.add(ppl);
+                    }
                 }
                 adapter.notifyDataSetChanged();
                 Log.i(TAG, "Data changed from realtime DB");
-                listView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        listView.setSelection(userListLocal.size()-1);
-                    }
-                });
+                listView.post(() -> listView.setSelection(userListLocal.size()-1));
             }
 
             @Override

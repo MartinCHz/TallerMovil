@@ -27,6 +27,8 @@ public class Opciones extends AppCompatActivity {
     private DatabaseReference myRef;
     TextView dispo;
 
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,16 +54,16 @@ public class Opciones extends AppCompatActivity {
         buttonDisponibilidad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User p = new User();
+                DatabaseReference userRef = myRef.child("user").child(mAuth.getCurrentUser().getUid());
                 if(dispo.getText() == "Disponible"){
                     dispo.setText("No disponible");
+                    userRef.child("available").setValue(false);
 
                 }else{
                     dispo.setText("Disponible");
-                    p.setAvailable(true);
-                    Intent intent = new Intent(Opciones.this, BasicJobIntentService.class);
+                    userRef.child("available").setValue(true);
+                    intent = new Intent(Opciones.this, BasicJobIntentService.class);
                     BasicJobIntentService.enqueueWork(Opciones.this, intent); // Envia el trabajo a BasicJobIntentService
-
                 }
             }
         });

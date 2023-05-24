@@ -59,6 +59,7 @@ public class BasicJobIntentService extends JobIntentService {
         currentUser = mAuth.getCurrentUser();
         createNotificationChannel();
         loadSubscriptionUsers();
+
     }
 
     public void loadSubscriptionUsers() {
@@ -68,6 +69,7 @@ public class BasicJobIntentService extends JobIntentService {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
                     User newUser = singleSnapshot.getValue(User.class);
+                    assert newUser != null;
                     if (newUser.isAvailable()) {
                         //if (newUser.isAvailable() && currentUser != null && currentUser.getUid().equals(singleSnapshot.getKey())) {
                         //if (newUser.isAvailable() && !currentUser.getUid().equals(singleSnapshot.getKey())) {
@@ -75,7 +77,7 @@ public class BasicJobIntentService extends JobIntentService {
                         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getBaseContext(), CHANNEL_ID);
                         mBuilder.setSmallIcon(R.drawable.sinfoto);
                         mBuilder.setContentTitle("Se conecto un usuario");
-                        mBuilder.setContentText("El usuario " + newUser.getName() + " " + newUser.getLastname() + " esta conectado");
+                        mBuilder.setContentText("El usuario " + newUser.getName() + " " + newUser.getLastName() + " esta conectado");
                         //Acción asociada a la notificación
                         Intent intent = new Intent(getBaseContext(), MapsActivity.class);
                         String id = singleSnapshot.getKey();

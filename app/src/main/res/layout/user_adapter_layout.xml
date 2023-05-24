@@ -8,6 +8,7 @@
     android:padding="10dp">
 
     <ImageView
+        android:id="@+id/peopleImage"
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:padding="5dp"

@@ -37,10 +37,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationProviderClient;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -51,6 +53,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        // Zoom buttons
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
 
         // Verificar y solicitar los permisos de ubicación
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -84,6 +90,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     LatLng locationLatLng = new LatLng(locationData.getLatitude(), locationData.getLongitude());
                     mMap.addMarker(new MarkerOptions().position(locationLatLng).title(locationData.getName()));
+
                     //Log.d(TAG, "Added marker for location: " + locationData.getName() + ", Latitude: " + locationData.getLatitude() + ", Longitude: " + locationData.getLongitude());
 
                 }

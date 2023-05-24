@@ -85,7 +85,7 @@ public class Registrarse extends AppCompatActivity {
         numIDEdit = findViewById(R.id.eident);
 
         mAuth = FirebaseAuth.getInstance();
-        myRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://tallermovil-11f83-default-rtdb.firebaseio.com");
+        myRef = FirebaseDatabase.getInstance().getReference();
 
         logger.info("Se va a solicitar el permiso");
         requestPermission(Registrarse.this, cameraPerm, "Permiso para utiliza la camara", CAMERA_PERMISSION_ID);
@@ -256,7 +256,7 @@ public class Registrarse extends AppCompatActivity {
                                 // uploadImageToFirebase(user.getUid());
                                 User p = new User();
                                 p.setName(nameEdit.getText().toString());
-                                p.setLastname(lastnameEdit.getText().toString());
+                                p.setLastName(lastnameEdit.getText().toString());
                                 p.setNumID(numIDEdit.getText().toString());
                                 p.setAvailable(false);
 
