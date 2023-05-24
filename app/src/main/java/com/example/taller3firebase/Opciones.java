@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.taller3firebase.model.User;
+import com.example.taller3firebase.service.BasicJobIntentService;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -58,6 +59,9 @@ public class Opciones extends AppCompatActivity {
                 }else{
                     dispo.setText("Disponible");
                     p.setAvailable(true);
+                    Intent intent = new Intent(Opciones.this, BasicJobIntentService.class);
+                    BasicJobIntentService.enqueueWork(Opciones.this, intent); // Envia el trabajo a BasicJobIntentService
+
                 }
             }
         });
